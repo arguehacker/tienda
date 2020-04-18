@@ -7,7 +7,8 @@ include "templates/nabvar.php"
 ?>
 <!-----------CONTENIDO------------>
           <br>
-          <?php if($mensaje!=""){?>
+          <section id="new-prod-index">
+            <?php if($mensaje!=""){?>
           <div class="alert alert-success">
               <?php echo $mensaje; ?>
               <!---------------------Opcional--------------------->
@@ -26,13 +27,15 @@ include "templates/nabvar.php"
               <?php
               //Mostrando los produtos de mi tabla producto
               foreach($listaProd as $prod){ ?>
-                <div class="col-12 col-sm-12 col-md-6 col-xl-3">
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                  <div class="thumbnail">
                     <div class="card">
-                        <img title="Titulo de producto" alt="Titulo" class="card-img-top" src="assets/img-products/<?php echo $prod['Imagen']; ?>" data-toggle="popover" data-trigger="hover" data-content="Descripcion de producto" height="200px">
-                        <div class="card-body">
-                            <span><?php echo $prod['NombreProd']; ?></span>
-                            <p class="card-text"><?php echo $prod['Marca']; ?></p>
-                            <h5 class="card-title">$<?php echo $prod['Precio']; ?></h5>
+                        <a><img title="Titulo de producto" alt="Titulo" class="card-img-top" alt="200" src="assets/img-products/<?php echo $prod['Imagen']; ?>" data-toggle="popover" data-trigger="hover" data-content="Descripcion de producto" height="200px"></a>
+                        <div class="caption">
+                          <div class="card-body">
+                            <p><?php echo $prod['NombreProd']; ?></p>
+                            <h3 class="card-text"><?php echo $prod['Marca']; ?></h3>
+                            <p>$<?php echo $prod['Precio']; ?></p>
                             <!-------------------------------FIN BUCLE DE MOSTRAR LOS PRODUCTOS EN EL BODY------------------------------->
                             <!-------------------------------FORMULARIO PARA AGREGAR PRODUCTOS EN EL CARRITO------------------------------->
                             <form action="" method="post">
@@ -40,18 +43,39 @@ include "templates/nabvar.php"
                                 <input type="hidden" name="nombreProd" id="nombreProd" value="<?php echo $prod['NombreProd']; ?>">
                                 <input type="hidden" name="marca" id="marca" value="<?php echo $prod['Marca']; ?>">
                                 <input type="hidden" name="precio" id="precio" value="<?php echo $prod['Precio']; ?>">
-                                <input type="hidden" name="cantidad" id="cantidad" value="<?php echo 1; ?>">
-                                <button class="btn btn-success btn-sm botonCarrito" name="btnAccion" value="Agregar" type="submit">Agregar al carrito</button>
+                                <p class="text-center">
+                                  <input type="hidden" name="cantidad" id="cantidad" value="<?php echo 1; ?>">
+                                <button class="btn btn-success btn-sm botonCarrito" name="btnAccion" value="Agregar" type="submit"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir</button>
+                                </p>
+                                
                             </form>
 
                         </div>
-
+                          
+                      </div>
                     </div>
-
+                  </div>
                 </div>
-
-             
               <?php } ?>
+            
+          </section>
+          
+              <section id="distribuidores-index">
+                <div class="container">
+                  <div class="col-xs-12 col-sm-6"></div>
+                  <div class="col-xs-12 col-sm-6"></div>
+                  <div class="col-xs-12">
+                    <div class="page-header">
+                      <h1>Nuestras<small>Marcas</small></h1>
+                      
+                    </div>
+                    <img src="assets/img/logos-marcas.png" alt="logos-marcas" class="img-responsive">
+                    
+                  </div>
+                  
+                </div>
+                
+              </section>
               
           </div>
       </div>
