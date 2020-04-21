@@ -82,7 +82,7 @@ nav*{
   margin: 20px 0;
 }
 .content p{
-  text-align: justify;
+  text-align: center;
 }
 
 @media screen and (max-width:800px) {
