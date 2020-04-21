@@ -97,17 +97,7 @@ if($state=="approved"){
         //print_r($listaProductos);
     }?>
     <div class="row">
-        <!----LEE LA LISTA DE PRODUCTOS DEL CLIENTE----------->
-        <?php foreach( $listaProductos as $producto){ ?>
-        <div class="col-2">
-            <div class="card">
-                <img class="card-img-top" src="" alt="assets/img-products/<?php echo $producto['Imagen']; ?>">
-                <div class="card-body">
-                    <p class="card-text"><?php echo $producto['NombreProd']; ?></p>
-                </div>
-            </div>
-        </div>
-        <?php }?>
+        <!----Boton-------->
         
     </div>
     </p>

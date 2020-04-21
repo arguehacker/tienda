@@ -51,6 +51,9 @@ include "templates/nabvar.php"
                 <form action="pagar.php" method="post">
                     <div class="alert alert-success" role="alert">
                         <div class="form-group">
+                        <label for="my-input">Ingrese su nombre completo</label>
+                        <input id="nombre" name="nombre" class="form-control" type="text" required="">
+
                         <label for="my-input">Correo de contacto</label>
                         <input id="email" name="email" class="form-control" type="email" required="">
                         </div>
