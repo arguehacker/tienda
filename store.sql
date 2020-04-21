@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 16-04-2020 a las 05:59:52
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.2.22
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 21-04-2020 a las 03:38:05
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -94,10 +93,10 @@ INSERT INTO `cliente` (`NIT`, `Nombre`, `NombreCompleto`, `Apellido`, `Clave`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalleVenta`
+-- Estructura de tabla para la tabla `detalleventa`
 --
 
-CREATE TABLE `detalleVenta` (
+CREATE TABLE `detalleventa` (
   `ID` int(15) NOT NULL,
   `IDVENTA` int(15) NOT NULL,
   `IDPRODUCTO` int(15) NOT NULL,
@@ -105,27 +104,6 @@ CREATE TABLE `detalleVenta` (
   `CANTIDAD` int(15) NOT NULL,
   `VENDIDO` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `detalleVenta`
---
-
-INSERT INTO `detalleVenta` (`ID`, `IDVENTA`, `IDPRODUCTO`, `PRECIOUNITARIO`, `CANTIDAD`, `VENDIDO`) VALUES
-(103, 40, 2, '255.00', 1, 1),
-(104, 40, 1, '3000.00', 1, 1),
-(105, 40, 2, '255.00', 1, 1),
-(106, 41, 1, '3000.00', 1, 1),
-(107, 41, 2, '255.00', 1, 1),
-(108, 42, 2, '255.00', 1, 1),
-(109, 43, 2, '255.00', 1, 1),
-(110, 43, 1, '3000.00', 1, 1),
-(111, 44, 2, '255.00', 1, 1),
-(112, 44, 1, '3000.00', 1, 1),
-(113, 45, 2, '255.00', 1, 1),
-(114, 45, 1, '3000.00', 1, 1),
-(115, 45, 2, '255.00', 1, 1),
-(116, 46, 1, '3000.00', 1, 1),
-(117, 46, 1, '3000.00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -190,24 +168,12 @@ CREATE TABLE `ventas` (
   `ID` int(11) NOT NULL,
   `ClaveTransacion` varchar(250) NOT NULL,
   `PaypalDatos` text NOT NULL,
+  `Nombre` varchar(250) NOT NULL,
   `Fecha` datetime NOT NULL,
   `Correo` varchar(100) NOT NULL,
   `Total` decimal(60,0) NOT NULL,
   `status` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `ventas`
---
-
-INSERT INTO `ventas` (`ID`, `ClaveTransacion`, `PaypalDatos`, `Fecha`, `Correo`, `Total`, `status`) VALUES
-(40, '2e768f9e415613ad41168e1c70d648cc', '{\"id\":\"PAYID-L2LYP2Q1T258240E97723926\",\"intent\":\"sale\",\"state\":\"approved\",\"cart\":\"61N28832YV833244M\",\"payer\":{\"payment_method\":\"paypal\",\"status\":\"VERIFIED\",\"payer_info\":{\"email\":\"sb-w7jbl660881@personal.example.com\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"payer_id\":\"MLLFA3FSZXVPC\",\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"},\"phone\":\"5033234741\",\"country_code\":\"SV\"}},\"transactions\":[{\"amount\":{\"total\":\"3510.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"3510.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payee\":{\"merchant_id\":\"628HUGKVDMKJ6\",\"email\":\"sb-ga3n61050275@business.example.com\"},\"description\":\"Compra de productos a Techmology box:$3,510.00\",\"custom\":\"2e768f9e415613ad41168e1c70d648cc#40\",\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\",\"item_list\":{\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"}},\"related_resources\":[{\"sale\":{\"id\":\"71388163S6167662B\",\"state\":\"completed\",\"amount\":{\"total\":\"3510.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"3510.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payment_mode\":\"INSTANT_TRANSFER\",\"protection_eligibility\":\"ELIGIBLE\",\"protection_eligibility_type\":\"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE\",\"transaction_fee\":{\"value\":\"189.84\",\"currency\":\"USD\"},\"parent_payment\":\"PAYID-L2LYP2Q1T258240E97723926\",\"create_time\":\"2020-04-15T22:17:32Z\",\"update_time\":\"2020-04-15T22:17:32Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/71388163S6167662B\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/71388163S6167662B/refund\",\"rel\":\"refund\",\"method\":\"POST\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LYP2Q1T258240E97723926\",\"rel\":\"parent_payment\",\"method\":\"GET\"}],\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\"}}]}],\"create_time\":\"2020-04-15T22:17:14Z\",\"update_time\":\"2020-04-15T22:17:32Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LYP2Q1T258240E97723926\",\"rel\":\"self\",\"method\":\"GET\"}]}', '2020-04-15 16:17:04', 'elsalvador@gmail.com', '3510', 'Completo'),
-(41, '2e768f9e415613ad41168e1c70d648cc', '{\"id\":\"PAYID-L2LZTHA5EY41839NF0416809\",\"intent\":\"sale\",\"state\":\"approved\",\"cart\":\"37727102A9002353P\",\"payer\":{\"payment_method\":\"paypal\",\"status\":\"VERIFIED\",\"payer_info\":{\"email\":\"sb-w7jbl660881@personal.example.com\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"payer_id\":\"MLLFA3FSZXVPC\",\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"},\"phone\":\"5033234741\",\"country_code\":\"SV\"}},\"transactions\":[{\"amount\":{\"total\":\"3255.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"3255.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payee\":{\"merchant_id\":\"628HUGKVDMKJ6\",\"email\":\"sb-ga3n61050275@business.example.com\"},\"description\":\"Compra de productos a Techmology box:$3,255.00\",\"custom\":\"2e768f9e415613ad41168e1c70d648cc#41\",\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\",\"item_list\":{\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"}},\"related_resources\":[{\"sale\":{\"id\":\"4X052095H15660708\",\"state\":\"completed\",\"amount\":{\"total\":\"3255.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"3255.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payment_mode\":\"INSTANT_TRANSFER\",\"protection_eligibility\":\"ELIGIBLE\",\"protection_eligibility_type\":\"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE\",\"transaction_fee\":{\"value\":\"176.07\",\"currency\":\"USD\"},\"parent_payment\":\"PAYID-L2LZTHA5EY41839NF0416809\",\"create_time\":\"2020-04-15T23:33:29Z\",\"update_time\":\"2020-04-15T23:33:29Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/4X052095H15660708\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/4X052095H15660708/refund\",\"rel\":\"refund\",\"method\":\"POST\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LZTHA5EY41839NF0416809\",\"rel\":\"parent_payment\",\"method\":\"GET\"}],\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\"}}]}],\"create_time\":\"2020-04-15T23:32:44Z\",\"update_time\":\"2020-04-15T23:33:29Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LZTHA5EY41839NF0416809\",\"rel\":\"self\",\"method\":\"GET\"}]}', '2020-04-15 17:32:30', 'compraventas@gmail.com', '3255', 'Completo'),
-(42, '2e768f9e415613ad41168e1c70d648cc', '{\"id\":\"PAYID-L2LZUCI0J884321C2874334X\",\"intent\":\"sale\",\"state\":\"approved\",\"cart\":\"92424707FV2490521\",\"payer\":{\"payment_method\":\"paypal\",\"status\":\"VERIFIED\",\"payer_info\":{\"email\":\"sb-w7jbl660881@personal.example.com\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"payer_id\":\"MLLFA3FSZXVPC\",\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"},\"phone\":\"5033234741\",\"country_code\":\"SV\"}},\"transactions\":[{\"amount\":{\"total\":\"255.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"255.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payee\":{\"merchant_id\":\"628HUGKVDMKJ6\",\"email\":\"sb-ga3n61050275@business.example.com\"},\"description\":\"Compra de productos a Techmology box:$255.00\",\"custom\":\"2e768f9e415613ad41168e1c70d648cc#42\",\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\",\"item_list\":{\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"}},\"related_resources\":[{\"sale\":{\"id\":\"2KM03549KJ820850M\",\"state\":\"completed\",\"amount\":{\"total\":\"255.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"255.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payment_mode\":\"INSTANT_TRANSFER\",\"protection_eligibility\":\"ELIGIBLE\",\"protection_eligibility_type\":\"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE\",\"transaction_fee\":{\"value\":\"14.07\",\"currency\":\"USD\"},\"parent_payment\":\"PAYID-L2LZUCI0J884321C2874334X\",\"create_time\":\"2020-04-15T23:34:57Z\",\"update_time\":\"2020-04-15T23:34:57Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/2KM03549KJ820850M\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/2KM03549KJ820850M/refund\",\"rel\":\"refund\",\"method\":\"POST\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LZUCI0J884321C2874334X\",\"rel\":\"parent_payment\",\"method\":\"GET\"}],\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\"}}]}],\"create_time\":\"2020-04-15T23:34:33Z\",\"update_time\":\"2020-04-15T23:34:57Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LZUCI0J884321C2874334X\",\"rel\":\"self\",\"method\":\"GET\"}]}', '2020-04-15 17:34:22', 'elsalvador@gmail.com', '255', 'Completo'),
-(43, '2e768f9e415613ad41168e1c70d648cc', '', '2020-04-15 17:47:51', 'misventas@hotmail.com', '3255', 'pendiente'),
-(44, '2e768f9e415613ad41168e1c70d648cc', '{\"id\":\"PAYID-L2LZ4TA0ES35122V9178370K\",\"intent\":\"sale\",\"state\":\"approved\",\"cart\":\"1GM43850UY751645E\",\"payer\":{\"payment_method\":\"paypal\",\"status\":\"VERIFIED\",\"payer_info\":{\"email\":\"sb-w7jbl660881@personal.example.com\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"payer_id\":\"MLLFA3FSZXVPC\",\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"},\"phone\":\"5033234741\",\"country_code\":\"SV\"}},\"transactions\":[{\"amount\":{\"total\":\"3255.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"3255.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payee\":{\"merchant_id\":\"628HUGKVDMKJ6\",\"email\":\"sb-ga3n61050275@business.example.com\"},\"description\":\"Compra de productos a Techmology box:$3,255.00\",\"custom\":\"2e768f9e415613ad41168e1c70d648cc#44\",\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\",\"item_list\":{\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"}},\"related_resources\":[{\"sale\":{\"id\":\"1KE67570J4942933U\",\"state\":\"completed\",\"amount\":{\"total\":\"3255.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"3255.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payment_mode\":\"INSTANT_TRANSFER\",\"protection_eligibility\":\"ELIGIBLE\",\"protection_eligibility_type\":\"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE\",\"transaction_fee\":{\"value\":\"176.07\",\"currency\":\"USD\"},\"parent_payment\":\"PAYID-L2LZ4TA0ES35122V9178370K\",\"create_time\":\"2020-04-15T23:53:37Z\",\"update_time\":\"2020-04-15T23:53:37Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/1KE67570J4942933U\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/1KE67570J4942933U/refund\",\"rel\":\"refund\",\"method\":\"POST\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LZ4TA0ES35122V9178370K\",\"rel\":\"parent_payment\",\"method\":\"GET\"}],\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\"}}]}],\"create_time\":\"2020-04-15T23:52:44Z\",\"update_time\":\"2020-04-15T23:53:37Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LZ4TA0ES35122V9178370K\",\"rel\":\"self\",\"method\":\"GET\"}]}', '2020-04-15 17:52:30', 'misventas@hotmail.com', '3255', 'Completo'),
-(45, '2e768f9e415613ad41168e1c70d648cc', '{\"id\":\"PAYID-L2LZ5XA8YN40544U95226038\",\"intent\":\"sale\",\"state\":\"approved\",\"cart\":\"6JM60825AL352323K\",\"payer\":{\"payment_method\":\"paypal\",\"status\":\"VERIFIED\",\"payer_info\":{\"email\":\"sb-w7jbl660881@personal.example.com\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"payer_id\":\"MLLFA3FSZXVPC\",\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"},\"phone\":\"5033234741\",\"country_code\":\"SV\"}},\"transactions\":[{\"amount\":{\"total\":\"3510.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"3510.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payee\":{\"merchant_id\":\"628HUGKVDMKJ6\",\"email\":\"sb-ga3n61050275@business.example.com\"},\"description\":\"Compra de productos a Techmology box:$3,510.00\",\"custom\":\"2e768f9e415613ad41168e1c70d648cc#45\",\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\",\"item_list\":{\"shipping_address\":{\"recipient_name\":\"John Doe\",\"line1\":\"Free Trade Zone\",\"city\":\"San Salvador\",\"state\":\"San Salvador\",\"postal_code\":\"1120\",\"country_code\":\"SV\"}},\"related_resources\":[{\"sale\":{\"id\":\"0FL76192W0163233T\",\"state\":\"completed\",\"amount\":{\"total\":\"3510.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"3510.00\",\"shipping\":\"0.00\",\"insurance\":\"0.00\",\"handling_fee\":\"0.00\",\"shipping_discount\":\"0.00\"}},\"payment_mode\":\"INSTANT_TRANSFER\",\"protection_eligibility\":\"ELIGIBLE\",\"protection_eligibility_type\":\"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE\",\"transaction_fee\":{\"value\":\"189.84\",\"currency\":\"USD\"},\"parent_payment\":\"PAYID-L2LZ5XA8YN40544U95226038\",\"create_time\":\"2020-04-15T23:55:29Z\",\"update_time\":\"2020-04-15T23:55:29Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/0FL76192W0163233T\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/0FL76192W0163233T/refund\",\"rel\":\"refund\",\"method\":\"POST\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LZ5XA8YN40544U95226038\",\"rel\":\"parent_payment\",\"method\":\"GET\"}],\"soft_descriptor\":\"PAYPAL *JOHNDOESTES\"}}]}],\"create_time\":\"2020-04-15T23:55:08Z\",\"update_time\":\"2020-04-15T23:55:29Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-L2LZ5XA8YN40544U95226038\",\"rel\":\"self\",\"method\":\"GET\"}]}', '2020-04-15 17:54:47', 'elhackerpaypal@gmail.com', '3510', 'Completo'),
-(46, '3fbae28d878995fdd67e8b9155f6ab67', '', '2020-04-15 21:22:41', 'blogger.programador@gmail.com', '6000', 'pendiente');
 
 --
 -- Índices para tablas volcadas
@@ -232,9 +198,9 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`NIT`);
 
 --
--- Indices de la tabla `detalleVenta`
+-- Indices de la tabla `detalleventa`
 --
-ALTER TABLE `detalleVenta`
+ALTER TABLE `detalleventa`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `IDVENTA` (`IDVENTA`),
   ADD KEY `IDPRODUCTO` (`IDPRODUCTO`);
@@ -262,31 +228,31 @@ ALTER TABLE `ventas`
 --
 
 --
--- AUTO_INCREMENT de la tabla `detalleVenta`
+-- AUTO_INCREMENT de la tabla `detalleventa`
 --
-ALTER TABLE `detalleVenta`
-  MODIFY `ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+ALTER TABLE `detalleventa`
+  MODIFY `ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `CodigoProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `CodigoProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `detalleVenta`
+-- Filtros para la tabla `detalleventa`
 --
-ALTER TABLE `detalleVenta`
+ALTER TABLE `detalleventa`
   ADD CONSTRAINT `detalleVenta_ibfk_1` FOREIGN KEY (`IDVENTA`) REFERENCES `ventas` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `detalleVenta_ibfk_2` FOREIGN KEY (`IDPRODUCTO`) REFERENCES `productos` (`CodigoProd`);
 COMMIT;
