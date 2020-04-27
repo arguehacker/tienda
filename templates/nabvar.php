@@ -3,11 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="style.css">
+         <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
   </head>
-  <body>
+  <body id="container-page-index">
 
   <div class="header">
     <h2 class="logo">TECHNOLOGY BOX</h2>
@@ -25,14 +29,8 @@
       </label>
     </ul>
   </div>
-        
-         <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="css/normalize.css">
 
   
-<div class="content">
+<div class="content" id="new-prod-index">
     
    
