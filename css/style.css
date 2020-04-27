@@ -72,9 +72,9 @@ nav*{
   visibility: hidden;
   z-index: -1111;
 }
-
+/*Modificado 26 de abril*/
 .content{
-  padding: 0 20px;
+  padding: 0 100px;
 }
 .content img{
   width: 100%;
@@ -217,3 +217,16 @@ footer{
     outline: none;
 }
 
+/* Estilos nuevos agregados */
+
+#new-prod-index{
+    background-color: rgba(255,255,255,.9);
+}
+@media (min-width: 992px)
+.container {
+    width: 970px;
+}
+
+#container-page-index {
+    background-image: url(../assets/img/font-index.JPG);
+}
