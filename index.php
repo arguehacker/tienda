@@ -7,7 +7,7 @@ include "templates/nabvar.php"
 ?>
 <!-----------CONTENIDO------------>
           <br>
-          <section id="new-prod-index">
+          <section>
             <?php if($mensaje!=""){?>
           <div class="alert alert-success">
               <?php echo $mensaje; ?>
