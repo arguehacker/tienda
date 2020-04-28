@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2020 a las 05:11:55
+-- Tiempo de generación: 28-04-2020 a las 17:10:14
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.29
 
@@ -134,12 +134,8 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`CodigoProd`, `NombreProd`, `Precio`, `Modelo`, `Marca`, `Imagen`) VALUES
-(1, 'Video camara con zoom optico', '3000', 'HMX-F90', 'Samsung', 'Samsung-HMX-F90-video-camera-2.jpg'),
-(2, 'Altavoz Multiroom 360 R6', '255', 'WAM6500', 'Samsung', 'es_WAM6500-ZF_001_Front_black.jpg'),
-(3, 'Galaxy J5', '150', 'J5', 'Samsung', 'j5.jpg'),
-(4, 'Monitor TV LED 32\"', '200', 'T32E310EW', 'Samsung', 'es_LT32E310EW-EN_001_Front_black.jpg'),
-(5, 'Camara Digital Sony Cyber-shot', '1000', 'DSC-WX9', 'Sony', 'camara.jpg'),
-(6, 'Laptop', '555', 'DL23', 'Toshiba', 'lenguaje-programacion.jpg');
+(1, 'Video Camara', '3000', 'HMX-F90', 'Samsung', '1588048861_Samsung-HMX-F90-video-camera-2.jpg'),
+(21, 'Tv Smart', '2000', 'Samsung', 'Dell', '1588084675_1588049560_es_LT32E310EW-EN_001_Front_black.jpg');
 
 -- --------------------------------------------------------
 
@@ -253,19 +249,19 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  MODIFY `ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `CodigoProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `CodigoProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- Restricciones para tablas volcadas
