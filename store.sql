@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2020 a las 17:10:14
+-- Tiempo de generación: 08-05-2020 a las 18:01:10
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.29
 
@@ -41,7 +41,7 @@ CREATE TABLE `administrador` (
 --
 
 INSERT INTO `administrador` (`ID`, `Nombres`, `Apellidos`, `Correo`, `Password`, `Foto`) VALUES
-(1, 'Administrador', 'Prueba', 'admin@admin', 'admin', 'imagen.png');
+(16, 'Admin', 'Admin', 'admin@admin', 'admin', '1588740057_montaje python.jpg');
 
 -- --------------------------------------------------------
 
@@ -134,8 +134,11 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`CodigoProd`, `NombreProd`, `Precio`, `Modelo`, `Marca`, `Imagen`) VALUES
-(1, 'Video Camara', '3000', 'HMX-F90', 'Samsung', '1588048861_Samsung-HMX-F90-video-camera-2.jpg'),
-(21, 'Tv Smart', '2000', 'Samsung', 'Dell', '1588084675_1588049560_es_LT32E310EW-EN_001_Front_black.jpg');
+(1, 'Video Camara', '3000', 'HMX-F90', 'Samsung', '1588741910_1588048345_Samsung-HMX-F90-video-camera-2.jpg'),
+(24, 'Samsung Galaxy', '1000', 'Plus', 'Samsung', '1588740455_1588048439_galaxy-s7-edge_gallery_right_gold_s3.png'),
+(27, 'Monitor', '180', 'HP L718', 'hp', '1588741844_1588084675_1588049560_es_LT32E310EW-EN_001_Front_black.jpg'),
+(28, 'Teclado', '15', 'Logitex', 'Logitex', '1588771014_1588088653_318-3182180_teclado-png-transparent-png.png'),
+(29, 'Bocina inalambrica', '35', 'Omega DX10', 'Omega', '1588771095_es_WAM6500-ZF_001_Front_black.jpg');
 
 -- --------------------------------------------------------
 
@@ -243,7 +246,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `detalleventa`
@@ -255,7 +258,7 @@ ALTER TABLE `detalleventa`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `CodigoProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `CodigoProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
