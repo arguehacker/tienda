@@ -11,12 +11,14 @@ if ($_POST){
     $NombreClient=$_POST['nombre'];
     $Correo=$_POST['email'];
     foreach($_SESSION['CARRITO'] as $indice=>$prod){
+        $cantidad_prod = $prod['CANTIDAD'];
         $total=$total + ($prod['PRECIO']*$prod['CANTIDAD']);
     }
-    $sentencia=$pdo->prepare("INSERT INTO `ventas` (`ID`, `ClaveTransacion`, `PaypalDatos`, `Nombre`, `Fecha`, `Correo`, `Total`, `status`) 
-        VALUES (NULL,:ClaveTransacion, '',:NombreClient,NOW(),:Correo,:Total, 'pendiente')");
+    $sentencia=$pdo->prepare("INSERT INTO `ventas` (`ID`, `ClaveTransacion`, `PaypalDatos`, `Nombre`, `Fecha`, `Correo`, `Cantidad`, `Total`, `status`) 
+        VALUES (NULL,:ClaveTransacion, '',:NombreClient,NOW(),:Correo,:Cantidad,:Total, 'pendiente')");
     $sentencia->bindParam(":ClaveTransacion",$SID);
     $sentencia->bindParam(":NombreClient",$NombreClient);
+    $sentencia->bindParam(":Cantidad",$cantidad_prod);
     $sentencia->bindParam(":Correo",$Correo);
     $sentencia->bindParam(":Total",$total);
     $sentencia->execute();

@@ -44,7 +44,8 @@ include "templates/nabvar.php"
                                 <input type="hidden" name="marca" id="marca" value="<?php echo $prod['Marca']; ?>">
                                 <input type="hidden" name="precio" id="precio" value="<?php echo $prod['Precio']; ?>">
                                 <p class="text-center">
-                                  <input type="hidden" name="cantidad" id="cantidad" value="<?php echo 1; ?>">
+                                  <!--<input type="hidden" name="cantidad" id="cantidad" value="<?php echo 1; ?>">-->
+                                <input class="btn btn-primary" type="number" name="cantidad" id="cantidad" min="1" value="1" style="width: 30%; height: 35%">
                                 <button class="btn btn-success btn-sm botonCarrito" name="btnAccion" value="Agregar" type="submit"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir</button>
                                 </p>
                                 
