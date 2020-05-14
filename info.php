@@ -9,7 +9,7 @@ include "templates/nabvar.php"
  <html>
                 <head>
                                
-                    <H1><strong>BIENVENDI@ A LA MISION Y VISION DE NUESTRA EMPRESA</H1></strong>
+                    <H1 aling="center"><strong>BIENVENDIDOS</H1></strong>
 
                     <H1 align="justify"> <strong>MISION</H1></strong>
                         
