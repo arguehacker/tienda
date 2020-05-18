@@ -18,19 +18,44 @@ include "templates/nabvar.php"
 
           <div class="row">
               <?php
+              //Sirve para colocar a pagina uno
+              if(!$_GET){
+                header('location:index.php?pagina=1');
+              }
               //CONEXION A TABLA PRODUCTOS
               $sentencia = $pdo->prepare("SELECT * FROM `productos`");
               $sentencia->execute();
               $listaProd = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-              //print_r($listaProd);
+              $producto_Page = 4; //Esto me sirve para mostrar cuantos productos se muestran
+              //Contar productos de la base de datos
+              $total_productos=$sentencia->rowCount();
+              $paginas = ceil($total_productos/$producto_Page); //Transformamos a entero aproximado
+              ?>
+              <?php
+              //Sirve para bloquear en la URL posibles rompimientos de la paginación
+              if($_GET['pagina']>$paginas || $_GET['pagina']<=0){
+                header('location:index.php?pagina=1');
+              }
+              //Calculando los productos a mostra en page
+              $iniciar = ($_GET['pagina']-1)*$producto_Page;
+
+              //Mostramos el limite a mostrar con las variables 
+              $sql_product = $pdo->prepare("SELECT * FROM `productos` LIMIT :iniciar,:n_product");
+              //Le pasamos los parametros
+              $sql_product->bindParam(':iniciar',$iniciar,PDO::PARAM_INT);
+              $sql_product->bindParam(':n_product',$producto_Page,PDO::PARAM_INT);
+              $sql_product->execute();
+              //Utilizamos esta variable para mostrar en el foreach
+              $resultado_page = $sql_product->fetchAll(PDO::FETCH_ASSOC);
+              
               ?>
               <?php
               //Mostrando los produtos de mi tabla producto
-              foreach($listaProd as $prod){ ?>
-                <div class="col-xs-12 col-sm-6 col-md-3">
+              foreach($resultado_page as $prod){ ?>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                   <div class="thumbnail">
                     <div class="card">
-                        <a><img title="Titulo de producto" alt="Titulo" class="card-img-top" alt="200" src="assets/img-products/<?php echo $prod['Imagen']; ?>" data-toggle="popover" data-trigger="hover" data-content="Descripcion de producto" height="200px"></a>
+                        <a><img title="<?php echo $prod['NombreProd'];?>" alt="Titulo" class="card-img-top" alt="200" src="assets/img-products/<?php echo $prod['Imagen']; ?>" data-toggle="popover" data-trigger="hover" data-content="Descripcion de producto" height="200px"></a>
                         <div class="caption">
                           <div class="card-body">
                             <p><?php echo $prod['NombreProd']; ?></p>
@@ -58,8 +83,24 @@ include "templates/nabvar.php"
                   </div>
                 </div>
               <?php } ?>
-            
           </section>
+              <!--Carrusel de paginación-->
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item <?php echo $_GET['pagina']<=1?'disabled':''?>">
+                    <a class="page-link" href="index.php?pagina=<?php echo $_GET['pagina']-1;?>">Anterior</a>
+                  </li>
+                  <!--Paginacion-->
+                  <?php for ($i=0; $i < $paginas; $i++) { ?>
+                  <li class="page-item <?php echo $_GET['pagina']==$i+1?'active': ''?>"><a class="page-link" href="index.php?pagina=<?php echo $i+1; ?>"><?php echo $i+1; ?></a></li>
+                  <?php } ?>
+
+                  <li class="page-item <?php echo $_GET['pagina']>=$paginas?'disabled':''?>">
+                    <a class="page-link" href="index.php?pagina=<?php echo $_GET['pagina']+1;?>">Siguiente</a>
+                  </li>
+                </ul>
+              </nav>
+              <!--Fin carrusel-->
           
               <section id="distribuidores-index">
                 <div class="container">
